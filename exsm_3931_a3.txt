@@ -1,0 +1,292 @@
+Hungry Customer Pseudocode
+
+snack = {no.snack = false, yes.snack = true}
+
+ArriveAtVendingMachine 
+SeesTastySnack{
+    If (snack == true) then
+        SelectSnack
+        TakeOutMoney
+    Else then
+        LookForDifferntVendingMachine
+        ArriveAtVendingMachine
+        SeesTastySnack
+}
+
+
+money = {no.money = false, yes.money = true}
+
+TakeOutMoney{
+    If (money == true) then
+        EnterSnackCode
+    Else then
+        FindMoreMoney
+        EnterSnackCode
+    Else then
+	    FindMoreMoney
+        LookForDifferntVendingMachine
+        ArriveAtVendingMachine
+        SeesTastySnack
+}
+
+snackamount = {no = false, yes = true}
+
+EnterSnackCode{
+    If (snackamount == true) then
+        PutMoneyInVendingMachine
+        VendingMachineDispensesSnack
+    Else then
+        PickDifferentSnack
+        EnterSnackCode
+    Else then
+        LookForDifferentVendingMachine
+        ArriveAtVendingMachine
+        SeesTastySnack
+}
+
+
+snackdispense = {no = false, yes = true}
+snackcorrect = {incorrect = false, correct= true}
+changetoreturn = {no.change = false, yes.change = true}
+shouldtherebechange = {should.not = false, should = true}
+changebackbutton= {no.button = false, yes.button = true}
+helpnumber = {no.help = false, yes.help = true}
+
+VendingMachineDispensesSnack{
+    If (snackdispense == true) then
+        snackcorrect
+            If (snackcorrect == true) then
+                changetoreturn
+                    If (changetoreturn == true) then
+                        VendingMachineDispensesChange
+                    Else then
+                        shouldtherebechange
+                            If (shouldtherebechange == true) then
+                                changebackbutton
+                                    If (changebackbutton == true) then
+                                        PushChangeBackButton
+                                    Else then
+                                        helpnumber
+                                            If (helpnumber == true) then
+                                                CallForHelpWithProblem 
+                                                TakeSnack  
+                                                ContinueWithDay
+                                            Else then
+                                                TakeSnack
+                                                ContinueWithDay
+                            Else then
+                                TakeSnack
+                                ContinueWithDay                   
+            Else then
+                changetoreturn
+                    If (changetoreturn == true) then
+                        VendingMachineDispensesChange 
+                    Else then
+                        shouldtherebechange
+                            If (shouldtherebechange == true)
+                                changebackbutton
+                                    If (changebackbutton == true)
+                                        PushChangeBackButton
+                                    Else then
+                                         helpnumber
+                                             If (helpnumber == true)
+                                                CallForHelpWithProblem
+                                                TakeSnack
+                                                ContinueWithDay
+                                            Else    
+                                                TakeSnack  
+                                                ContinueWithDay	    
+                            Else then
+                                helpnumber
+                                    If (helpnumber == true)
+                                        CallForHelpWithProblem  
+                                        TakeSnack 
+                                        ContinueWithDay
+                                    Else then  
+                                        TakeSnack  
+                                        ContinueWithDay
+    Else then
+        changetoreturn
+            If (changetoreturn == true) then
+                 VendingMachineDispensesChange
+            Else then
+                shouldtherebechange
+                    If (shouldtherebechange == true) then
+                         changebackbutton
+                            If (changebackbutton == true) then
+                                PushChangeBackButton
+                            Else then
+                                helpnumber
+                                    If (helpnumber == true) then
+                                        CallForHelpWithProblem
+                                        ContinueWithDay
+                                    Else then
+                                        ContinueWithDay
+                    Else then 
+                        helpnumber
+                             If (helpnumber == true) then
+                                CallForHelpWithProblem
+                                ContinueWithDay
+                            Else then
+                                ContinueWithDay
+}
+
+changedispense = {no = false, yes = true}
+changecorret = {incorrect = false, correct= true}
+changebackbutton= {no.button = false, yes.button = true}
+
+VendingMachineDispensesChange{
+    If (changedispense == true) then
+        changecorret
+            If (changecorret == true) then
+                TakeSnackAndChange
+                ContinueWithDay
+            Else then
+                TakeSnackAndChange
+                helpnumber
+                    If (helpnumber == true) then
+                        CallForHelpWithProblem
+                        ContinueWithDay
+                    Else then
+                        ContinueWithDay 
+            Else then
+                changebackbutton
+                    If (changebackbutton == true) then
+                        PushChangeBackButton
+                    Else then
+                        helpnumber
+                            If (helpnumber == true) then
+                                CallForHelpWithProblem
+                                TakeChange
+                                ContinueWithDay
+                            Else then
+                               TakeChange
+                               ContinueWithDay
+            Else then
+                helpnumber
+                    If (helpnumber == true) then
+                        CallForHelpWithProblem
+                        TakeChange
+                        ContinueWithDay
+                    Else then
+                        TakeChange
+                        ContinueWithDay 
+    Else then
+        changebackbutton
+            If (changebackbutton == true) then
+                PushChangeBackButton
+            Else then
+                helpnumber
+                    If (helpnumber == true) then
+                        CallForHelpWithProblem
+                        ContinueWithDay               
+                    Else then
+                        ContinueWithDay
+
+}
+
+buttonpushbefore = {no = false, yes = true}
+changetoreturn = {no.change = false, yes.change = true}
+shouldtherebechange = {should.not = false, should = true}
+changebackbutton= {no.button = false, yes.button = true}
+
+
+PushChangeBackButton{
+    If (buttonpushbefore == true) then
+        helpnumber
+            If (helpnumber == true) then
+                CallForHelpWithProblem
+                ContinueWithDay
+            Else then
+                CallForHelpWithProblem
+                TakeSnack
+                ContinueWithDay
+            Else then
+                ContinueWithDay 
+    Else then
+        changetoreturn
+            If (changetoreturn == true) then
+                VendingMachineDispensesChange
+            Else then
+                shouldtherebechange
+                    If (shouldtherebechange == true) then
+                        changebackbutton
+                            If (changebackbutton == true) then
+                                PushChangeBackButton
+                          
+}
+
+
+
+Machine Owner Pseudocode
+
+keys = {no.keys = false, yes.keys = true}
+
+ArriveAtVendingMachine {
+    If (keys == true) then
+        UnlockVendingMachine
+        ObserveInventory
+    Else then
+        GoFindKeys
+        ArriveAtVendingMachine
+        UnlockVendingMachine
+        ObserveInventory
+}
+
+
+stock = { no= false, yes= true}
+expirydate = { no= false, yes= true}
+
+ObserveInventory {
+	If (stock == true) then
+        CheckExpirationDate
+            If (expirydate == true) then
+	            RemoveAndRestock
+	            UnlockCoinStorage
+	            CheckCoinStorage
+            Else then
+                RestockSnacks
+                UnlockCoinStorage
+	            CheckCoinStorage
+    Else then
+        CheckExpirationDate
+            If (expirydate == true) then
+	            RemoveAndRestock
+	            UnlockCoinStorage
+	            CheckCoinStorage
+            Else then
+                UnlockCoinStorage
+	            CheckCoinStorage
+}
+
+coinstoretrive = { no= false, yes= true}
+CheckCoinStorage {
+	If (coinstoretrive == true) then
+	    EmptyCoinStroage
+	    ReturnDrawerToMachine
+    Else then
+        ReturnDrawerToMachine
+}
+
+
+
+lockstroage = { no= false, yes= true}
+lockvending = { no= false, yes= true}
+ReturnDrawerToMachine {
+	If (lockstroage  == true) then
+      lockvending
+        If (lockvending  == true) then
+            ContinueWithDay
+        Else then
+            LockVendingMachine
+            ContinueWithDay
+    Else then
+        LockCoinStorage
+        lockvending
+            If (lockvending  == true) then
+                ContinueWithDay
+            Else then
+                LockVendingMachine
+                ContinueWithDay
+}
+
